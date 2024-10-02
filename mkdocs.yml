@@ -1,11 +1,11 @@
-site_name: Documentation Tachéo
+site_name: Documentation Extenso
 
 nav:
   - Accueil: index.md
   - Installation & déploiement :
     - Installation: installation.md
     - Environnement: environnement.md
-    - Module de calcul: calcul.md
+    - Configuration: config.md
     - Module de visualisation: visualisation.md
   - Fonctions :
     - Heatmap:
@@ -22,6 +22,11 @@ nav:
       - Fonction 1: 'fg.md'
       - Fonction 2: 'df.md'
       - Fonction 3: 'sd.md'
+  - Développement :
+    - Base de données: 'config_dev.md'
+    - API: 'utilisation.md'
+    - Applications: 'frontend.md'
+    - Déploiement: 'deploy.md'
   - Informations :
     - Déploiement & Configuration: 'deploy.md'
     - A propos: 'about.md'

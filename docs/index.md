@@ -1,4 +1,4 @@
-# Bienvenue à la documentation Extenso
+# Documentation Extenso
 
 
 L’application est divisé en deux parties différentes : Le module de calcul écrit en Python hébergé sur le serveur et le module de visualisation écrit en R
@@ -16,16 +16,12 @@ Le module de visualisation récupère ces données pour afficher des cartes et d
     |     `-- app
     |          `-- www
     |               |-- img
-    |               |    `-- # Images utilisés dans l'application
+    |               |    `-- # Images des sites - Format PNG
     |               |-- favicon.ico
     |               |-- main.css
     |               `-- tiles_config.json # Map tiles configuration file
     |-- R
     |   `-- # R scripts
-    |-- tests
-    |   `-- # Test unitaires automatisés
-    |-- vignettes
-    |   `-- # fusen files
     |-- dev
         `-- # Golem files
 

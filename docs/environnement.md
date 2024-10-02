@@ -1,25 +1,41 @@
-# Configuration de l'environnement
+# Configuration des environnements
 
-## Fichier `.env`
+[À venir] Les variables d'environnement SFTP & SMTP sont stockés directement dans la base de données pour que l'adminisateur puisse éditer les connexions ainsi que la configuration directement via le panel sans passer par l'édition du docker compose à la main. Les modifications, une fois validés, sont configurés et utilisés par les nombreux services instanatnément sans avoir besoin de redémarrer le container.
+
+## Configuration des docker compose
+
+Deux fichiers docker compose sont disponibles, une pour la version de développement et une autre pour la version de production.
+
+La différence entre les deux fichiers est l'environnement défini ainsi que les ports pour qu'il puissent fonctionner simultanément sur la même machine sans intérférer l'une avec l'autre.
+
+La configuration des base de données et des connexions est faite directement dans l'environnement contenu dans chacun des deux fichiers.
+
+Voià un détail de l'utilisation de l'environnement au sein du docker.
 
 ```
-FLASK_PORT=[Port Flask] (4444) # Pas encore utilisé
-FLASK_HOST=[Host Flask] (0.0.0.0) # Pas encore utilisé
-
-POSTGRES_DB=[Base de données] (omiv-extenso)
-POSTGRES_USER=[Utilisateur de la BDD] (omiv-extenso)
-POSTGRES_PASSWORD=[Mot de passe de la BDD] (omiv-extenso)
-
-SFTP_SERVER=[Host IP] (185.155.93.29)
-SFTP_USER=[Utilisateur SFTP] (debian)
-SFTP_IDENTITY_FILE_PATH=[Path du fichier SSH]
-
-EXTENSO_MIN_DATE=[Date de début souhaité] (2022-06-15)
-SOLEIL_MIN_DATE=[Date de début souhaité] (2022-06-15)
-SOH_MIN_DATE=[Date de début souhaité] (2022-06-15)
-
-EXTENSO_DATA_PATH=[Path sur le serveur distant où se trouvent les données extenso] (/home/debian/data/extenso)
-ERROR_LOG_PATH=[Path du dossier log où seront stockés les rapports générés par le script de parsing] (./parsing_scripts/logs)
+x-environnement: &environnement
+  # Environnement utilisé par le service db_extenso
+  POSTGRES_DB: dev-omiv-extenso                # Base de données
+  POSTGRES_USER: omiv_extenso                  # Utilisateur
+  POSTGRES_PASSWORD: omiv-extenso              # Mot de passe
+  POSTGRES_PORT: 5432                          # Ne pas changer le port
+  POSTGRES_HOST: db_extenso_dev                # Host -> Nom du service
+  # Sftp Connection Environment
+  SFTP_HOST: 185.155.93.29                     # Host SFTP
+  SFTP_USER: debian                            # Utilisateur SFTP
+  SFTP_IDENTITY_FILE: ./ssh_key/api_extenso    # Clé SSH privé
+  SFTP_PATH: /tmp/public/EXTENSO               # Chemin des fichiers sur le serveur distant
+  SFTP_FILE_FORMAT: "(\\w+)_(\\w+)\\.csv"      # Format des fichiers
+  # SMTP Connection Environment
+  SMTP_HOST: 'mail68.lwspanel.com'             # Host SMTP
+  SMTP_PORT: 587                               # Port utilisé
+  SMTP_USER: 'alerte-omiv@eliashajjar.fr'      # Utilisateur (généralement le mail)
+  SMTP_PASSWORD: 'Omiv-Extenso-07'             # Mot de passe
+  SMTP_MODEL: 'alert_mail.html'                # Modèle utilisé (/backend_extenso/parsing_service/mail_model/)
 ```
 
-Le fichier environnement est utilisé par l'API et les scripts de parsing
+La configuration des variables d'environnement (uniquement pour la verison de production) sont éditables directement sur le panel administrateur où il est possible de vérifier les connexions ainsi que le bon fonctionnement.
+
+## Panel Administrateur
+
+### À venir ..

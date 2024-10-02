@@ -1,6 +1,6 @@
 # Front-End | RShiny
 
-## Installation de la bonne version R & Shiny
+## Installation R & Shiny
 
 La version de **R** utilisé ici est la version `R Package Version` et la version de Shiny est la `Shiny Package Version`
 
@@ -18,7 +18,7 @@ https://github.com/rstudio/shiny-server/wiki/Building-Shiny-Server-from-Source
 
 ## Installation des packages R
 
-Pour une application golem, il est important de s'assurer que tous les packages sont installés et dans la bonne version
+Les packages utilisés sont issues de CRAN en grande majorité cependant certains d'eux sont issues de GitHub
 
 ###  1. Préparation des outils nécessaires
 
@@ -50,6 +50,8 @@ devtools::check()
 
 # Back-End | Docker
 
+## Installation de docker
+
 Le docker contient les deux services, `backend_extenso-api_extenso` qui contient toute la partie API et `backend_extenso-db_extenso-1` qui contient la base de données et la gestion des connexions.
 
 - Pré-requis : Configuration de l'environnement (voir [configuration env](environnement.md))
@@ -59,53 +61,25 @@ Le docker contient les deux services, `backend_extenso-api_extenso` qui contient
     | 
     |-- backend_extenso/
     |   |-- Dockerfile
-    |   |-- docker-compose.yml
-    |   |-- .env
-    |   |-- schema_extenso.sql
-    |   `-- API/
+    |   |-- docker-compose-dev.yml  #Version de développement utilisé dans /dev/
+    |   |-- docker-compose-prod.yml  #Version de production utilisé dans /omiv/
+    |   `-- api_service/
     |         |-- app.py
     |         |-- db_extenso_omiv.py
     |         `-- parsing_scripts/
     |             |-- start.sh
     |             `-- [Scripts de parsing]
     |-- .gitlab-ci.yml
-    |-- services_scripts/
-    |   |-- kill.c
-    |   |-- run.c
-    |   `-- Makefile
-    |-- run_services
-    `-- kill_services
+    `-- start.sh
 
 - `backend_extenso/` -> Contient tout le back-end de l'application
-- `.gitlab-ci.yml` -> GitLab CI pour l'auto-déploiement
-- `services_scripts/` -> Scripts pour le lancement du docker
-- `run_services` -> Lancement de tous les services
-- `kill_services` -> Arrêt des services (options disponibles)
+- `.gitlab-ci.yml` -> GitLab CI pour l'auto-déploiement (version développement & version de production)
+- `start.sh` -> Script de lancement de la version de production uniquement
 
-## Configuration du docker
+## Installation de Docker
 
-### Configuration du `docker-compose.yml`
+Dans l'application actuelle la version utilisé est la `Docker version 20.10.5+dfsg1, build 55c4c88`.
 
-Configuration de secret `ssh_key` pour la connexion sftp :
+Il est recommandé d'installer Docker Engine au lieu de Docker io qui peut ne pas être compatible avec l'application.
 
-```
-secrets:
-  ssh_key:
-    file: /home/user/.ssh/id_rsa <- Ajouter le chemin de la clé SSH
-```
-
-Configuration des ports :
-
-- Service `db_extenso` : 
-
-```
-ports:
-      - [Port souhaité (par défaut 5432)]:5432   
-```
-
-- Service `api_extenso`:
-
-```
- ports:
-      - [Port souhaité (par défaut 4444)]:4444
-```
+Pour l'installation, la documentation docker est disponible directement via [ce lien](https://docs.docker.com/engine/install/).
