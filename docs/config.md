@@ -48,7 +48,15 @@ Pour lancer le script il faut que le docker soit lancé, pour lancer le containe
 sudo docker compose -f docker-compose-prod.yml up --build --force-recreate -d
 ```
 
-Une fois lancé on pourra lancer le script `update_base.sh`, pour le lancer :
+Avant de lancer le script de structure pour la base de données, il faut créer un `TYPE ENUM` pour qu'il puisse correctement créer toutes les tables.
+
+Il suffit de lancer cette query dans la base de données :
+
+```sql
+CREATE TYPE station_enum AS ENUM ('On-Going', 'Completed');
+```
+
+Une fois terminé on pourra lancer le script `update_base.sh`, pour le lancer :
 
 ```bash
 sudo docker exec -it backend_extenso-api_extenso-1 /bin/bash update_base.sh
@@ -60,7 +68,7 @@ Normalement une fois lancé la base de données devrait contenir la strcutre.
 
 Pré-requis : [Environnement correctment configuré](environnement.md)
 
-Informations: **Le script de parsing est configuré dans le docker pour se lancer tous les jour à 12h (heure UTC)**
+Informations: **Le script de parsing est configuré dans le docker pour se lancer tous les jours à 12h (heure UTC)**
 
 Après avoir correctement structuré la base de données on peut lancer le parsing,
 

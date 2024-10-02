@@ -8,11 +8,9 @@ La fonction `map_ui` génère une carte intéractive en utilisant le package `le
 
 - Affichage des stations sur une carte avec des marqueurs
 
-- Couleur des marqueurs en fonction de la dernière mise à jour de la station
+- Couleur des marqueurs en fonction de la dernière mise à jour de la station (bleu -> Completed)
 
-- Intégration d'une configuration par site pour l'utilisation d'un géoserveur personnalisé
-
-- Affichage d'information par station (Nom de la station, Site, Dernière mise à jour)
+- Affichage d'information par station (Nom de la station, Site, Dernière mise à jour, Status)
 
 ### Paquets nécessaires
 
@@ -30,8 +28,9 @@ install.packages(c("htmltools", "xts", "leaflet", "jsonlite"))
     - `date` : La date de la dernière mise à jour (format `Date`).
     - `lat` : La latitude de la station (numérique).
     - `lon` : La longitude de la station (numérique).
-    - `sta_code` : Le code de la station (caractère).
-    - `site_name` : Le nom du site où se trouve la station (caractère).
+    - `comments` : Commentaires
+    - `last_update`: Date de la dernière mise à jour de la stations
+    - `status`: Status de la station (Enum) soit On-Going soit Completed
 
 - `site` : Le nom du site pour laquel la configuration des tuiles doit être récupérée depuis un fichier JSON. Si non spécifié, la configuration par défaut est utilisée.
 
@@ -48,19 +47,18 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
     stations <- data.frame(
-    date = as.Date(c('2024-07-01', '2024-07-02')),
     lat = c(37.7749, 34.0522),
     lon = c(-122.4194, -118.2437),
-    sta_code = c("SFO", "LAX"),
-    site_name = c("San Francisco", "Los Angeles")
+    comments = c("", ""),
+    last_update = c("", ""),
+    status = c("", ""), #Enum
+    . . .
   )
 
+  con <- (API URL)
+
   output$map <- renderLeaflet({
-    map_ui(stations, site = "Viella")
+    map_ui(con, stations)
   })
 }
 ```
-
-### Configuration
-
-L'explication du fichier du configuration est dans le module de visualisation, le fichier est situé à `inst/app/www/tiles_config.json`.

@@ -2,33 +2,23 @@ site_name: Documentation Extenso
 
 nav:
   - Accueil: index.md
-  - Installation & déploiement :
+  - Installation & configuration :
     - Installation: installation.md
     - Environnement: environnement.md
     - Configuration: config.md
-    - Module de visualisation: visualisation.md
-  - Fonctions :
-    - Heatmap:
-      - Fonction 1: 'fg.md'
-      - Fonction 2: 'df.md'
-      - Fonction 3: 'sd.md'
-    - Graphiques ggplot :
-      - ggplot_cumul(. . .): 'ggplot_cumul.md'
-      - ggplot_serie_option_2d(. . .): 'ggplot_2d.md'
-      - ggplot_serie_option(. . .): 'ggplot.md'
-    - Carte:
-      - map_ui(. . .): 'map_ui.md'
-    - Graphiques plotly:
-      - Fonction 1: 'fg.md'
-      - Fonction 2: 'df.md'
-      - Fonction 3: 'sd.md'
-  - Développement :
+    - Déploiement des application: visualisation.md
+  - Les fonctions:
+    #- ggplot_cumul(. . .): 'ggplot_cumul.md'
+    #- ggplot_serie_option_2d(. . .): 'ggplot_2d.md'
+    #- ggplot_serie_option(. . .): 'ggplot.md'
+    - map_ui(. . .): 'map_ui.md'
+  - Développement:
     - Base de données: 'config_dev.md'
-    - API: 'utilisation.md'
+    - API: 'api.md'
     - Applications: 'frontend.md'
     - Déploiement: 'deploy.md'
   - Informations :
-    - Déploiement & Configuration: 'deploy.md'
+    #- Déploiement & Configuration: 'deploy.md'
     - A propos: 'about.md'
   
 theme:
