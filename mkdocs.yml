@@ -18,7 +18,6 @@ nav:
     - Applications: 'frontend.md'
     - Déploiement: 'deploy.md'
   - Informations :
-    #- Déploiement & Configuration: 'deploy.md'
     - A propos: 'about.md'
   
 theme:

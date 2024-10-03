@@ -1,4 +1,4 @@
-# Module de visualisation Shiny
+# Déploiement & Configuration
 
 Le module shiny utilisé est `shinydashboard` qui permet d'avoir l'UI d'un dashboard en utilisant le package `shiny`
 
@@ -35,7 +35,7 @@ L'attribution des ports (version déploiement)
 Pour lancer le docker compose, il faut effectuer cette commande qui va lancer le fichier `docker-compose-prod.yml`:
 
 ```
-sudo docker compose -f docker-compose-dev.yml up --build --force-recreate -d
+sudo docker compose -f docker-compose-prod.yml up --build --force-recreate -d
 ```
 
 ### Configuration Ngnix
