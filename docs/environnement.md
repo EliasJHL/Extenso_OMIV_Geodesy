@@ -16,21 +16,21 @@ Voià un détail de l'utilisation de l'environnement au sein du docker.
 x-environnement: &environnement
   # Environnement utilisé par le service db_extenso
   POSTGRES_DB: dev-omiv-extenso                # Base de données
-  POSTGRES_USER: omiv_extenso                  # Utilisateur
-  POSTGRES_PASSWORD: omiv-extenso              # Mot de passe
+  POSTGRES_USER: user                          # Utilisateur
+  POSTGRES_PASSWORD: password                  # Mot de passe
   POSTGRES_PORT: 5432                          # Ne pas changer le port
   POSTGRES_HOST: db_extenso_dev                # Host -> Nom du service
   # Sftp Connection Environment
-  SFTP_HOST: 185.155.93.29                     # Host SFTP
+  SFTP_HOST: IP adress                         # Host SFTP
   SFTP_USER: debian                            # Utilisateur SFTP
   SFTP_IDENTITY_FILE: ./ssh_key/api_extenso    # Clé SSH privé
   SFTP_PATH: /tmp/public/EXTENSO               # Chemin des fichiers sur le serveur distant
   SFTP_FILE_FORMAT: "(\\w+)_(\\w+)\\.csv"      # Format des fichiers
   # SMTP Connection Environment
-  SMTP_HOST: 'mail68.lwspanel.com'             # Host SMTP
+  SMTP_HOST: host                              # Host SMTP
   SMTP_PORT: 587                               # Port utilisé
-  SMTP_USER: 'alerte-omiv@eliashajjar.fr'      # Utilisateur (généralement le mail)
-  SMTP_PASSWORD: 'Omiv-Extenso-07'             # Mot de passe
+  SMTP_USER: 'alert@mail.com'                  # Utilisateur (généralement le mail)
+  SMTP_PASSWORD: 'password'                    # Mot de passe
   SMTP_MODEL: 'alert_mail.html'                # Modèle utilisé (/backend_extenso/parsing_service/mail_model/)
 ```
 

@@ -46,7 +46,8 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session) {
-    stations <- data.frame(
+  
+  stations <- data.frame(
     lat = c(37.7749, 34.0522),
     lon = c(-122.4194, -118.2437),
     comments = c("", ""),

@@ -101,3 +101,13 @@ server {
         }
 }
 ```
+
+### Accès aux logs
+
+Pour l'accès aux logs il y a la commande `docker logs` qui permet de voir ce que le programme renvoie comme information ou message d'erreur.
+
+Utilisation:
+
+```bash
+sudo docker logs service_name
+```
