@@ -18,7 +18,7 @@ api_service
     |-- app.py
     |-- api/
     |   |-- routes/
-    |   |     `-- # Dossier contenant toutes les routes API
+    |   |   `-- # Dossier contenant toutes les routes API
     |   |-- base.py
     |   `-- create_app.py
     |

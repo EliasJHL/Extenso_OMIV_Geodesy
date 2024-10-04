@@ -2,7 +2,7 @@
 
 ### Description
 
-La fonction `map_ui` génère une carte intéractive en utilisant le package `leaflet`. Cette fonction mets en place les marqueurs représentant les stations données dans la liste `stations`, concernant les tuiles personnalisés, l'argument `site` permet de chercher dans le fichier `tiles_config.json` si une configuration pour ce site existe auquel cas il mettra les tuiles par défaut appartenant au `Orthophoto IGN`.
+La fonction `map_ui` génère une carte intéractive en utilisant le package `leaflet`. Cette fonction mets en place les marqueurs représentant les stations dans la base de données.
 
 ### Fonctionnalités
 
@@ -52,7 +52,7 @@ server <- function(input, output, session) {
     lon = c(-122.4194, -118.2437),
     comments = c("", ""),
     last_update = c("", ""),
-    status = c("", ""), #Enum
+    status = c("", ""), #Enum dans la base de données ("Completed" / "On-Going")
     . . .
   )
 
